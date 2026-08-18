@@ -1,0 +1,217 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: default;
+}
+
+.lock-screen {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/ft_lock_bkg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Empêcher le défilement sur tout élément */
+.lock-screen * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.top-info {
+  position: absolute;
+  top: 3%;
+  left: 8%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+  animation: fadeIn 0.6s ease-out;
+  pointer-events: none;
+}
+
+.locked-by {
+  color: #dacde29e;
+  font-size: clamp(12px, 1.4vw, 18px);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+}
+
+.lock-icon-spacer {
+  display: none;
+}
+
+.bottom-panel {
+  position: absolute;
+  top: 4%;
+  left: 8%;
+  transform: translateX(-50%);
+  width: min(90vw, 420px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 10;
+  animation: fadeIn 0.6s ease-out;
+  pointer-events: none;
+}
+
+.back-soon {
+  color: #dacde29e;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  margin: 0 0 2px 0;
+  pointer-events: none;
+}
+
+.unlock-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  pointer-events: auto;
+}
+
+.password-input {
+  width: min(320px, 80vw);
+  height: 38px;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 6px;
+  outline: none;
+  background: rgba(218, 205, 226, 0.62);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #222;
+  font-size: 12px;
+  text-align: left;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  pointer-events: auto;
+}
+
+.password-input::placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.password-input:focus {
+  background: rgba(218, 205, 226, 0.62);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+.password-input.shake {
+  animation: shake 0.4s ease;
+  border-color: rgba(255, 99, 99, 0.9);
+}
+
+.unlock-btn {
+  width: min(360px, 80vw);
+  padding: 11px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.85);
+  color: #1a1a1a;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: background 0.2s ease, transform 0.1s ease;
+  pointer-events: auto;
+}
+
+.unlock-btn:hover {
+  background: #ffffff;
+}
+
+.unlock-btn:active {
+  transform: scale(0.98);
+}
+
+.error-message {
+  color: #ff8a8a;
+  font-size: 13px;
+  font-weight: 500;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  height: 18px;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.error-message.visible {
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 4px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+}
+
+@media (max-height: 600px) {
+  .top-info {
+    top: 9.5%;
+    left: 20%;
+  }
+  .bottom-panel {
+    top: 12.5%;
+    left: 20%;
+  }
+  .password-input {
+    height: 20px;
+    /* width: 30px; */
+  }
+}
+
+/* Mode plein écran sans barres de défilement */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Supprimer les bordures de focus sur les inputs */
+input:focus {
+  outline: none;
+}

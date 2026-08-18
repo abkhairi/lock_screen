@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self';" />
+  <title>ft_lock</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="lock-screen">
+
+    <div class="top-info">
+      <p class="locked-by" id="lockedBy">Locked by <span id="username">...</span> : <span id="elapsed">a few seconds</span> ago...</p>
+    </div>
+
+    <div class="lock-icon-spacer"></div>
+
+    <div class="bottom-panel">
+      <p class="back-soon">Back soon..</p>
+
+      <form id="unlockForm" class="unlock-form" autocomplete="off">
+        <input
+          type="password"
+          id="passwordInput"
+          class="password-input"
+          placeholder="Enter password"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <!-- <button type="submit" id="unlockBtn" class="unlock-btn">Unlock</button> -->
+      </form>
+
+      <p class="error-message" id="errorMessage">Incorrect password</p>
+    </div>
+
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

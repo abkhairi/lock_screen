@@ -1,0 +1,42 @@
+{
+  "name": "ft-lock",
+  "version": "1.0.0",
+  "description": "42-style Electron desktop lock screen application",
+  "main": "main.js",
+  "author": "abkhairi",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^43.4.0",
+    "electron-builder": "^26.15.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "build": {
+    "appId": "com.ft.lockscreen",
+    "productName": "ft-lock",
+    "files": [
+      "main.js",
+      "preload.js",
+      ".env",
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.utilities"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
